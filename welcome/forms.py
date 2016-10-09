@@ -30,7 +30,7 @@ class WelcomeForm(forms.Form):
 
     email = forms.EmailField(
         label='邮箱',
-        required=True,
+        required=False,
         max_length=64,
     )
 
@@ -80,7 +80,7 @@ class WelcomeForm(forms.Form):
                         AppendedText('tel', '''<span class="glyphicon glyphicon-phone"></span>''',
                                      placeholder='填写你的手机号码'),
                         AppendedText('email', '''<span class="glyphicon glyphicon-envelope"></span>''',
-                                     placeholder='填写你的邮箱'),
+                                     placeholder='选填,之后会添加邮件通知功能'),
                         AppendedText('college', '''<span class="glyphicon glyphicon-book"></span>''',
                                      placeholder='“专业-年级数字”，如“软件工程-15”'),
                         InlineRadios('dormitory'),
