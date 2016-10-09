@@ -1,3 +1,28 @@
 unix:///home/ubuntu/HUST-PA/HUST-PA.sock
 uwsgi --socket HUST-PA.sock --wsgi-file test.py
-uwsgi --socket HUST-PA.sock --module TechDepartment.wsgi --chmod-socket=664
+uwsgi --socket HUST-PA.sock --module TechDepartment.wsgi --chmod-socket=664 --enable-threads
+uwsgi --ini hustpa_uwsgi.ini
+/usr/local/bin/uwsgi --socket /home/ubuntu/HUST-PA/HSUT-PA.sock --module /home/ubuntu/HUST-PA/mysite.wsgi --chmod-socket=666
+
+# mysite_uwsgi.ini file
+[uwsgi]
+
+# Django-related settings
+# the base directory (full path)
+chdir           = /home/ubuntu/HUST-PA
+# Django's wsgi file
+module          = TechDepartment.wsgi
+# the virtualenv (full path)
+#home            = /path/to/virtualenv
+
+# process-related settings
+# master
+master          = true
+# maximum number of worker processes
+processes       = 10
+# the socket (use the full path to be safe
+socket          = /home/ubuntu/HUST-PA/HUST-PA.sock
+# ... with appropriate permissions - may be needed
+# chmod-socket    = 664
+# clear environment on exit
+vacuum          = true

@@ -82,7 +82,7 @@ class WelcomeForm(forms.Form):
                         AppendedText('email', '''<span class="glyphicon glyphicon-envelope"></span>''',
                                      placeholder='选填,之后会添加邮件通知功能'),
                         AppendedText('college', '''<span class="glyphicon glyphicon-book"></span>''',
-                                     placeholder='“专业-年级数字”，如“软件工程-15”'),
+                                     placeholder='“专业 年级数字”，如“软件工程15”'),
                         InlineRadios('dormitory'),
                         InlineRadios('group'),
                         Field('introduction', placeholder='选填，对出行有何要求，对摄影协会有何建议'),
