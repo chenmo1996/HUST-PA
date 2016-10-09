@@ -116,16 +116,16 @@ class WelcomeForm(forms.Form):
         else:
             return tel
 
-    def clean_college(self):
-        college = self.cleaned_data['college']
-        try:
-            major, grade = college.split('-')
-        except ValueError:
-            raise forms.ValidationError('你的格式没填对吧？')
-        if grade not in ('14', '15', '16'):
-            return college
-        else:
-            return college
+    # def clean_college(self):
+    #     college = self.cleaned_data['college']
+    #     try:
+    #         major, grade = college.split('-')
+    #     except ValueError:
+    #         pass
+    #     if grade not in ('14', '15', '16'):
+    #         return college
+    #     else:
+    #         return college
 
     # def clean_dormitory(self):
     #     dormitory = self.cleaned_data['dormitory']
