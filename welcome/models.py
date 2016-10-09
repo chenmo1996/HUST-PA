@@ -9,8 +9,8 @@ class Group(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = '小组'
-        verbose_name_plural = '小组'
+        verbose_name = '是否摄协'
+        verbose_name_plural = '是否摄协'
 
 # Group.objects.create(name="WeizhongTu", description="24")
 
