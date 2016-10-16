@@ -57,10 +57,10 @@ class WelcomeForm(forms.Form):
         required=True,
     )
     room = forms.ModelChoiceField(
-        label='电影自习室报名',
+        label='电影自习室报名(选填)',
         queryset=Room.objects.all(),
         empty_label=None,
-        required=True,
+        required=False,
     )
     introduction = forms.CharField(
         label='报名信息',
