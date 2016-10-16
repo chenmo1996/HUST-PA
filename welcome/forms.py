@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy
 
-from .models import Group1,Group2
+from .models import Group1,Group2,Room
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Field, ButtonHolder, Submit
@@ -56,6 +56,12 @@ class WelcomeForm(forms.Form):
         empty_label=None,
         required=True,
     )
+    room = forms.ModelChoiceField(
+        label='电影自习室报名',
+        queryset=Room.objects.all(),
+        empty_label=None,
+        required=True,
+    )
     introduction = forms.CharField(
         label='报名信息',
         widget=forms.Textarea(),
@@ -92,6 +98,7 @@ class WelcomeForm(forms.Form):
                         InlineRadios('dormitory'),
                         InlineRadios('group1'),
                         InlineRadios('group2'),
+                        InlineRadios('room'),
                         Field('introduction', placeholder='请说说你加入了哪些组织，有哪些特长，如何了解到摄影协会的，对你想加入的管理层的看法'),
                         Field('captcha'),
                     )
