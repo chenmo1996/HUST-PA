@@ -30,7 +30,7 @@ def inform(sender, instance, created, **kwargs):
                         邮箱:{{ email }}
                         专业-年级:{{ college }}
                         寝室住址:{{ dormitory }}
-                        小组意向:{{ group }}
+                        小组意向:{{ group1 }}
                         自我介绍:{{ introduction }}
                 ''')
     context = Context(
@@ -41,7 +41,8 @@ def inform(sender, instance, created, **kwargs):
             'email': instance.email,
             'college': instance.college,
             'dormitory': instance.dormitory,
-            'group': instance.group,
+            'group1': instance.group1,
+            'group2': instance.group2,
             'introduction': instance.introduction,
         }
     )

@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy
 
-from .models import Group
+from .models import Group1,Group2
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Field, ButtonHolder, Submit
@@ -28,8 +28,8 @@ class WelcomeForm(forms.Form):
         max_length=11,
     )
 
-    email = forms.EmailField(
-        label='邮箱',
+    email = forms.CharField(
+        label='qq或者微信',
         required=False,
         max_length=64,
     )
@@ -44,16 +44,22 @@ class WelcomeForm(forms.Form):
         label='寝室住址',
         required=True,
     )
-    group = forms.ModelChoiceField(
-        label='是否摄协成员',
-        queryset=Group.objects.all(),
+    group1 = forms.ModelChoiceField(
+        label='管理层报名第一志愿',
+        queryset=Group1.objects.all(),
+        empty_label=None,
+        required=True,
+    )
+    group2 = forms.ModelChoiceField(
+        label='管理层报名第二志愿',
+        queryset=Group2.objects.all(),
         empty_label=None,
         required=True,
     )
     introduction = forms.CharField(
-        label='要求/建议/备注',
+        label='报名信息',
         widget=forms.Textarea(),
-        required=False,
+        required=True,
         max_length=2000,
     )
     captcha = CaptchaField(
@@ -80,12 +86,13 @@ class WelcomeForm(forms.Form):
                         AppendedText('tel', '''<span class="glyphicon glyphicon-phone"></span>''',
                                      placeholder='填写你的手机号码'),
                         AppendedText('email', '''<span class="glyphicon glyphicon-envelope"></span>''',
-                                     placeholder='选填,之后会添加邮件通知功能'),
+                                     placeholder='选填，请输入qq或者微信号'),
                         AppendedText('college', '''<span class="glyphicon glyphicon-book"></span>''',
                                      placeholder='“专业 年级数字”，如“软件工程15”'),
                         InlineRadios('dormitory'),
-                        InlineRadios('group'),
-                        Field('introduction', placeholder='选填，对出行有何要求，对摄影协会有何建议'),
+                        InlineRadios('group1'),
+                        InlineRadios('group2'),
+                        Field('introduction', placeholder='请说说你加入了哪些组织，有哪些特长，如何了解到摄影协会的，对你想加入的管理层的看法'),
                         Field('captcha'),
                     )
                 ),
