@@ -45,7 +45,7 @@ class WelcomeForm(forms.Form):
         required=True,
     )
     group1 = forms.ModelChoiceField(
-        label='报名哪次活动（如果两个活动都报请分别报名两次）',
+        label='报名哪次活动（如果两个活动都报请分别报名）',
         queryset=Group1.objects.all(),
         empty_label=None,
         required=True,
@@ -99,7 +99,7 @@ class WelcomeForm(forms.Form):
                         InlineRadios('group1'),
                         InlineRadios('group2'),
                         InlineRadios('room'),
-                        Field('introduction', placeholder='选填 摄影师:说说你的拍摄水平以及拍摄要求。/模特:说说你对摄影师的要求，以及希望的风格，希望拍摄的地点，以及对摄影协会的要求。'),
+                        Field('introduction', placeholder='摄影师:说说你的拍摄水平拍摄风格以及拍摄要求。/模特:说说你对摄影师的要求，以及希望的风格，希望拍摄的地点，以及对摄影协会的要求。'),
                         Field('captcha'),
                     )
                 ),
