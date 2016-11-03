@@ -45,22 +45,22 @@ class WelcomeForm(forms.Form):
         required=True,
     )
     group1 = forms.ModelChoiceField(
-        label='管理层报名第一志愿',
+        label='报名哪次活动（如果两个活动都报请分别报名两次）',
         queryset=Group1.objects.all(),
         empty_label=None,
         required=True,
     )
     group2 = forms.ModelChoiceField(
-        label='管理层报名第二志愿',
+        label='报名项目',
         queryset=Group2.objects.all(),
         empty_label=None,
         required=True,
     )
     room = forms.ModelChoiceField(
-        label='电影自习室报名(选填)',
+        label='是否摄协成员（也欢迎非摄协成员来玩）',
         queryset=Room.objects.all(),
         empty_label=None,
-        required=False,
+        required=True,
     )
     introduction = forms.CharField(
         label='报名信息',
@@ -99,7 +99,7 @@ class WelcomeForm(forms.Form):
                         InlineRadios('group1'),
                         InlineRadios('group2'),
                         InlineRadios('room'),
-                        Field('introduction', placeholder='请说说你加入了哪些组织，有哪些特长，如何了解到摄影协会的，对你想加入的管理层的看法'),
+                        Field('introduction', placeholder='选填 摄影师:说说你的拍摄水平以及拍摄要求。/模特:说说你对摄影师的要求，以及希望的风格，希望拍摄的地点，以及对摄影协会的要求。'),
                         Field('captcha'),
                     )
                 ),
