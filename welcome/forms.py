@@ -76,7 +76,7 @@ class WelcomeForm(forms.Form):
     introduction = forms.CharField(
         label='报名信息',
         widget=forms.Textarea(),
-        required=True,
+        required=False,
         max_length=2000,
     )
     captcha = CaptchaField(
