@@ -107,7 +107,7 @@ class WelcomeForm(forms.Form):
                         AppendedText('wechat', '''<span class="glyphicon glyphicon-envelope"></span>''',
                                      placeholder='选填，请输入微信号'),
                         AppendedText('college', '''<span class="glyphicon glyphicon-book"></span>''',
-                                     placeholder='“专业 年级数字”，如“软件工程15”'),
+                                     placeholder='“专业 学历 年级数字”，如“软件工程本科15”'),
                         InlineRadios('dormitory'),
                         InlineRadios('room'),
                         InlineRadios('guanli'),
