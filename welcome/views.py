@@ -25,7 +25,7 @@ class WelcomeView(generic.View):
             NewMember.objects.create(**cd)
             messages.add_message(request,
                                  messages.SUCCESS,
-                                 '报名成功，请<a href="http://jq.qq.com/?_wv=1027&k=40A4Y38" target="_blank">点击此处加入华中大摄影协会2016</a>',
+                                 '报名成功，请<a href="http://jq.qq.com/?_wv=1027&k=40A4Y38" target="_blank">点击此处加入2017KS招新群</a>',
                                  extra_tags='safe')
             return render(request, self.template_name, {'form': form})
         else:

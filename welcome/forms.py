@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy
 
-from .models import Group1,Group2,Room
+from .models import Group1, Group2, Room
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Field, ButtonHolder, Submit
@@ -17,7 +17,7 @@ class WelcomeForm(forms.Form):
     )
 
     sex = forms.ChoiceField(
-        choices=((1, '男'), (0, '女'),(2,'其他')),
+        choices=((1, '男'), (0, '女'), (2, '其他')),
         label='性别',
         required=True,
     )
@@ -28,8 +28,14 @@ class WelcomeForm(forms.Form):
         max_length=11,
     )
 
-    email = forms.CharField(
-        label='qq或者微信',
+    qq = forms.CharField(
+        label='qq(选填)',
+        required=False,
+        max_length=64,
+    )
+
+    wechat = forms.CharField(
+        label='微信(选填)',
         required=False,
         max_length=64,
     )
@@ -40,27 +46,32 @@ class WelcomeForm(forms.Form):
         max_length=64,
     )
     dormitory = forms.ChoiceField(
-        choices=(('韵苑', '韵苑'), ('沁苑', '沁苑'),('紫菘','紫菘')),
+        choices=(('韵苑', '韵苑'), ('沁苑', '沁苑'), ('紫菘', '紫菘')),
         label='寝室住址',
         required=True,
     )
-    group1 = forms.ModelChoiceField(
-        label='报名哪次活动（如果两个活动都报请分别报名）',
-        queryset=Group1.objects.all(),
-        empty_label=None,
-        required=True,
-    )
-    group2 = forms.ModelChoiceField(
-        label='报名项目',
-        queryset=Group2.objects.all(),
-        empty_label=None,
-        required=True,
-    )
     room = forms.ModelChoiceField(
-        label='是否摄协成员（也欢迎非摄协成员来玩）',
+        label='意向舞种，新生party时会有每个舞种的展示',
         queryset=Room.objects.all(),
         empty_label=None,
         required=True,
+    )
+    guanli = forms.ChoiceField(
+        choices=((1, '是'), (0, '否'), (2, '容我想想')),
+        label='是否想加入KS街舞社管理层',
+        required=True,
+    )
+    group1 = forms.ModelChoiceField(
+        label='第一志愿（选否的可以跳过）',
+        queryset=Group1.objects.all(),
+        empty_label=None,
+        required=False,
+    )
+    group2 = forms.ModelChoiceField(
+        label='第二志愿（选否的可以跳过）',
+        queryset=Group2.objects.all(),
+        empty_label=None,
+        required=False,
     )
     introduction = forms.CharField(
         label='报名信息',
@@ -91,15 +102,19 @@ class WelcomeForm(forms.Form):
                         InlineRadios('sex'),
                         AppendedText('tel', '''<span class="glyphicon glyphicon-phone"></span>''',
                                      placeholder='填写你的手机号码'),
-                        AppendedText('email', '''<span class="glyphicon glyphicon-envelope"></span>''',
-                                     placeholder='选填，请输入qq或者微信号'),
+                        AppendedText('qq', '''<span class="glyphicon glyphicon-envelope"></span>''',
+                                     placeholder='选填，请输入qq号'),
+                        AppendedText('wechat', '''<span class="glyphicon glyphicon-envelope"></span>''',
+                                     placeholder='选填，请输入微信号'),
                         AppendedText('college', '''<span class="glyphicon glyphicon-book"></span>''',
                                      placeholder='“专业 年级数字”，如“软件工程15”'),
                         InlineRadios('dormitory'),
+                        InlineRadios('room'),
+                        InlineRadios('sex'),
                         InlineRadios('group1'),
                         InlineRadios('group2'),
-                        InlineRadios('room'),
-                        Field('introduction', placeholder='摄影师:说说你的拍摄水平拍摄风格以及拍摄要求。/模特:说说你对摄影师的要求，以及希望的风格，希望拍摄的地点，以及对摄影协会的要求。'),
+                        Field(
+                            'introduction', placeholder='选填/可以说说你对舞社的想法、期待或者疑惑。这里集结华科最有实力的dancer，bboy，popper，locker。欢迎一切无论有基础还是无基础的huster加入ks大家庭'),
                         Field('captcha'),
                     )
                 ),

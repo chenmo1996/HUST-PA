@@ -1,0 +1,13 @@
+
+uwsgi --http :8001 --chdir /home/ubuntu/HUST-PA --module TechDepartment.wsgi --enable-threads
+
+
+[program:TD]
+command=/usr/local/bin/uwsgi --http :8001 --chdir /home/ubuntu/HUST-PA --module TechDepartment.wsgi --enable-threads
+directory=/home/ubuntu/HUST-PA
+startsecs=0
+stopwaitsecs=0
+autostart=true
+autorestart=true
+
+sudo ln -s /etc/nginx/sites-available/hustpa.conf /etc/nginx/sites-enabled/hustpa.conf
