@@ -110,7 +110,7 @@ class WelcomeForm(forms.Form):
                                      placeholder='“专业 年级数字”，如“软件工程15”'),
                         InlineRadios('dormitory'),
                         InlineRadios('room'),
-                        InlineRadios('sex'),
+                        InlineRadios('guanli'),
                         InlineRadios('group1'),
                         InlineRadios('group2'),
                         Field(
