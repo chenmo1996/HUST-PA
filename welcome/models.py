@@ -43,6 +43,7 @@ class NewMember(models.Model):
     tel = models.CharField(verbose_name='电话', max_length=11)
     qq = models.CharField(verbose_name='qq', max_length=64)
     wechat = models.CharField(verbose_name='微信', max_length=64)
+    email = models.CharField(verbose_name='邮件', max_length=64)
     college = models.CharField(verbose_name='专业-年级', max_length=64)
     dormitory = models.CharField(verbose_name='寝室住址', max_length=64)
     guanli = models.IntegerField(verbose_name='管理层意向', choices=((1, '是'), (0, '否'),(2,'容我想想')))
