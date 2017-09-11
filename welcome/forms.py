@@ -62,13 +62,13 @@ class WelcomeForm(forms.Form):
         required=True,
     )
     group1 = forms.ModelChoiceField(
-        label='第一志愿（选否的可以跳过）',
+        label='第一志愿（选否的可以跳过,相关介绍在页尾）',
         queryset=Group1.objects.all(),
         empty_label=None,
         required=False,
     )
     group2 = forms.ModelChoiceField(
-        label='第二志愿（选否的可以跳过）',
+        label='第二志愿（选否的可以跳过,相关介绍在页尾）',
         queryset=Group2.objects.all(),
         empty_label=None,
         required=False,
