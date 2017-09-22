@@ -17,7 +17,7 @@ class WelcomeForm(forms.Form):
     )
 
     sex = forms.ChoiceField(
-        choices=((1, '男'), (0, '女'), (2, '其他')),
+        choices=((1, '男'), (0, '女'), (2, '仙女')),
         label='性别',
         required=True,
     )

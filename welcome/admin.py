@@ -9,7 +9,7 @@ class NewMemberAdmin(admin.ModelAdmin):
     fieldsets = (
         ('个人信息', {'fields': ('name', 'sex', 'college', 'dormitory')}),
         ('联系方式', {'fields': ('tel', 'qq','wechat')}),
-        ('分组意向&自我介绍', {'fields': ('guanli','group1','group2','room', 'introduction')}),
+        ('分组意向&自我介绍', {'fields': ('room', 'guanli','group1','group2','introduction')}),
     )
     search_fields = ('name','tel')
     filter_horizontal = ()

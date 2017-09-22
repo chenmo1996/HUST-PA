@@ -39,7 +39,7 @@ class Room(models.Model):
 
 class NewMember(models.Model):
     name = models.CharField(verbose_name='姓名', max_length=16)
-    sex = models.IntegerField(verbose_name='性别', choices=((1, '男'), (0, '女'),(2,'其他')))
+    sex = models.IntegerField(verbose_name='性别', choices=((1, '男'), (0, '女'),(2,'仙女')))
     tel = models.CharField(verbose_name='电话', max_length=11)
     qq = models.CharField(verbose_name='qq', max_length=64)
     wechat = models.CharField(verbose_name='微信', max_length=64)
