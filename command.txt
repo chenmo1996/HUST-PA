@@ -11,3 +11,7 @@ autostart=true
 autorestart=true
 
 sudo ln -s /etc/nginx/sites-available/hustpa.conf /etc/nginx/sites-enabled/hustpa.conf
+
+uwsgi --ini hustpa_uwsgi.ini --enable-threads
+
+python3 manage.py dumpdata welcome > welcome_data.json
